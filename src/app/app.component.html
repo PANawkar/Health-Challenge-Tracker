@@ -1,0 +1,13 @@
+<mat-toolbar color="tertiary">
+  <span>Health Challenge Tracker</span>
+  <span class="example-spacer"></span>
+  <div class="flex gap-5">
+    <button class="custom-red-button" (click)="deleteData()">
+      Delete Table
+    </button>
+    <a routerLink="dashboard" >Home</a>
+    <a routerLink="graph">Graph</a>
+    <a routerLink="add">Add Data</a>
+  </div>
+</mat-toolbar>
+<router-outlet></router-outlet>

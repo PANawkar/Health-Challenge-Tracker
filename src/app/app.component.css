@@ -1,0 +1,19 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+table {
+  width: 100%;
+}
+
+.custom-red-button {
+  background-color: #f44336; 
+  color: white;
+  border-radius: 40px; 
+  padding: 4px 8px; 
+  border: none; 
+  outline: none;
+}
+
+.custom-red-button:hover {
+  background-color: #d32f2f; 
+}

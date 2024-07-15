@@ -1,0 +1,107 @@
+<div class="container w-5/6 mx-auto mt-5">
+  <div class="flex justify-between">
+    <form class="w-60 max-w-xs mb-6">
+      <label
+        for="default-search"
+        class="mb-2 text-sm font-medium text-gray-900 sr-only"
+        >Search</label
+      >
+      <div class="relative">
+        <div
+          class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+        >
+          <svg
+            class="w-4 h-4 text-gray-500"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 20 20"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+            />
+          </svg>
+        </div>
+        <input
+          autocomplete="false"
+          matInput
+          (keyup)="applyFilter($event)"
+          placeholder="Ex. ium"
+          #input
+          type="search"
+          id="default-search"
+          class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Search Name"
+          required
+        />
+
+        <button
+          type="submit"
+          class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
+        >
+          Search
+        </button>
+      </div>
+    </form>
+
+    <mat-form-field>
+      <mat-label>Select an option</mat-label>
+      <mat-select
+        id="workoutName"
+        formControlName="workoutName"
+        [(value)]="selectedWorkoutType"
+        (selectionChange)="applyFilterByWorkoutType()"
+      >
+        <mat-option *ngFor="let Workout of workoutTypes" [value]="Workout">
+          {{ Workout }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="workouts">
+      <th mat-header-cell *matHeaderCellDef>Workouts</th>
+      <td mat-cell *matCellDef="let element">{{ element.workouts }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="NoWorkouts">
+      <th mat-header-cell *matHeaderCellDef>No. of Workout</th>
+      <td mat-cell *matCellDef="let element">{{ element.NoWorkouts }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef>Total Workout Minutes</th>
+      <td mat-cell *matCellDef="let element">{{ element.duration }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">
+        <h1>No data matching the filter "{{ input.value }}"</h1>
+      </td>
+    </tr>
+  </table>
+  <br />
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements"
+  >
+  </mat-paginator>
+</div>
