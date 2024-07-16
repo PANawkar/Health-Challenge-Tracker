@@ -36,7 +36,7 @@ Run ng test to execute the unit tests via [Karma](https://karma-runner.github.io
 ## Deployment Link
 Health Challenge Tracker
 
-https://66955b2ee850a17c5a4bbb61--relaxed-malasada-aaad9c.netlify.app/
+https://fyle-assessment1.netlify.app/
 ## Further help
 
 To get more help on the Angular CLI use ng help or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
